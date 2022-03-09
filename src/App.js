@@ -10,9 +10,14 @@ class App extends Component {
       movies: data.movies,
       selected: {}
     };
+
+    setTimeout(() => 
+    this.updateSelected("ead538d8-6314-44ef-afdb-d63a3d79f321"),
+    2000);
   }
 
-  updateSelected = (idMovie) => {
+  updateSelected(idMovie) {
+    // console.log(this);
     const movie = this.state.movies.find(m => m._id == idMovie);
     this.setState({ selected: movie });
   }
@@ -21,9 +26,7 @@ class App extends Component {
     return (
       <div className="App">
         <Header />
-        <MovieList
-          updateSelected={this.updateSelected}
-          movies={this.state.movies} />
+        <MovieList movies={this.state.movies} />
         <MovieDetails selectedMovie={this.state.selected} />
       </div>
     );
