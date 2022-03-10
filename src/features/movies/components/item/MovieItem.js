@@ -1,7 +1,12 @@
-import './MovieItem.css';
+import './MovieItem.scss';
+
+const style = {
+  cursor: 'pointer',
+};
 
 const MovieItem = (props) => (
   <div
+    style={style}
     onClick={() => props.updateMovie(props.movie._id)}
     className="movieItem card text-center m-2"
     data-bs-toggle="modal"
