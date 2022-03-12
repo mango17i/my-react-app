@@ -1,11 +1,19 @@
 import { Component } from "react";
+import { Redirect } from "react-router-dom";
 import { Header, Loading } from "./components";
 import { mapMovies, urlApiMovie } from "./conf/api.movie";
 import { MovieDetails, MovieList, SearchBar } from "./features/movies/components";
 import { Movie } from "./features/movies/models/movie";
 import { default as data } from './utils/data.json';
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+
+// const One = () => <h1>One</h1>;
+// const Two = () => <h1>Two</h1>
+// const Three = () => <h1>Three</h1>
 
 class App extends Component {
+
+  //without router !!!!
   constructor(props) {
     super(props);
     this.state = {
@@ -27,7 +35,8 @@ class App extends Component {
   //   }, 200);
   // }
 
-  componentDidMount() { //async
+// !!!!!!!!!!!!!!!!!!!!!AXIOS WAY!!!!!!!!!!!!!!!!!!
+  componentDidMount() {
     urlApiMovie.get('/discover/movie')
       .then(res => res.data.results)
       .catch(console.error)
@@ -40,6 +49,9 @@ class App extends Component {
       })
       .catch(console.error)
   }
+
+//!!!!!!!!!!!!!FETCH WAY!!!!!!!!!!
+  // asynch componentDidMount() {
     // const options = {
     //   headers: {
     //     'Content-type': 'application/json;charset=utf-8',
@@ -95,6 +107,22 @@ class App extends Component {
 
   render() {
     return (
+    //   <div className="App">
+    //   <Router>
+    //     <Link to="/one">One</Link>
+    //     <Link to="/two">One</Link>  
+    //     <Link to="/two/three">One</Link>
+    //     <Switch>
+    //       <Route exact path="/one" component={One} />
+    //       <Route path="/two" render={(props) => <Two />} />
+    //       <Redirect render={() => <h1>Route par défault</h1>} />
+    //     </Switch>  
+    //   </Router>  
+    //   </div>
+          /*path one = :idUser and two = :idMovie*/
+
+
+
       <div className="App">
         <Header />
         {this.state.movies.length ?

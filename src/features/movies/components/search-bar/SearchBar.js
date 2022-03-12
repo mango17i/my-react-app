@@ -10,8 +10,8 @@ const SearchBar = () => (
         <option value="de-DE">Allemand</option>
       </select>
       <button
-        className="btn btn-small btn-success mx-1"
-        type="submit">Go !</button>
+        className="btn btn-small btn-dark mx-1"
+        type="submit">🔍</button>
     </form>
 );
   
